@@ -47,7 +47,7 @@ const Register = () => {
                     password: password
                 }
             })
-            navigate('/login')
+            navigate('/')
         }
     }
 

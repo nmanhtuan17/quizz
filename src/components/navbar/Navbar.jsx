@@ -9,7 +9,7 @@ function Navbar() {
         dispatch({
             type: 'LOGOUT'
         })
-        navigate('/login')
+        navigate('/')
     }
     return (
         <nav className="w-full bg-transparent text-neutral-900 px-5 md:px-10 flex items-center justify-between py-5 text-sm border-b-slate-200 border">
@@ -23,7 +23,7 @@ function Navbar() {
                     (<NavLink className={({ isActive }) => isActive ? "py-2 px-5 text-orange-500 font-semibold border rounded-full border-orange-500"
                         :
                         "py-2 transition px-5 text-neutral-50 font-semibold rounded-full bg-orange-500"}
-                        to={"/login"}>
+                        to={"/"}>
                         Login
                     </NavLink>)
                     :

@@ -20,7 +20,7 @@ const Login = () => {
                 type: 'LOGIN',
                 user: auth[0]
             })
-            navigate('/')
+            navigate('/quiz')
         }
     }
     return (

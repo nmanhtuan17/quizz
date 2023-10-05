@@ -4,22 +4,26 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Answer from '../components/Answer';
 import Context from '../store/Context';
 const Quiz = () => {
-    const [{questions, user_answers_true, user_wrong_answers}, dispatch] = useContext(Context)
+    const [{questions, questions_after}, dispatch] = useContext(Context)
     const { id } = useParams()
     const navigate = useNavigate()
-    const question = questions.filter((item) => item.id == id)
+    const question = questions.filter((item) => item.id === Number(id))
 
     const handleOnclick = (answer) => {
-        if (answer === question[0].correct_answer) {
+        dispatch({
+            type: 'SET_ANSWER',
+            payload: {
+                id: id,
+                user_answer: answer
+            }
+        })
+        if(answer === question[0].correct_answer){
             dispatch({
-                type: 'TOTAL_ANSWER',
-                userAnswer: answer
+                type: "COUNT_TRUE",
             })
-        }
-        else{
+        }else{
             dispatch({
-                type: 'TOTAL_WRONG_ANSWER',
-                wrongAnswer: answer
+                type: "COUNT_FALSE",
             })
         }
         if (Number(id) === questions.length) {
@@ -29,10 +33,9 @@ const Quiz = () => {
 
         }
     }
-    console.log('true: ', user_answers_true);
-    console.log('wrong: ', user_wrong_answers);
+    console.log(questions_after);
     return (
-        <div className='container'>
+        <div className='container p-5 md:py-10 md:px-10 '>
             <div className='flex justify-between mx-32'>
 
                 <span className=' max-w-fit items-center space-x-3 text-neutral-700 ring-[1px] ring-neutral-400 rounded-lg p-3 text-xs font-semibold mr-3'><span className='text-lg'>{question[0].id}</span>/{questions.length}</span>

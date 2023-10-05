@@ -17,12 +17,12 @@ const rootStore = {
                 "Phần mặt đường và lề đường",
                 "Phần đường xe chạy",
                 "Phần đường xe cơ giới",
-            ]
+            ],
         },
         {
             id: 2,
             question: "Which UK country features a dragon on their flag?",
-            correct_answer: "Wales",
+            correct_answer: "Stanley Kubrick",
             all_answers: [
                 "Stanley Kubrick",
                 "James Cameron",
@@ -31,9 +31,11 @@ const rootStore = {
             ]
         },
     ],
+    questions_after: [],
+    user_answers_true: 0,
+    user_wrong_answers: 0
 
-    user_answers_true: [],
-    user_wrong_answers: []
+
 
 }
 
@@ -56,15 +58,22 @@ const rootReducer = (state, action) => {
                 userLogin: false,
                 userData: {}
             }
-        case 'TOTAL_ANSWER':
+        case 'SET_ANSWER':
+            let questionFind = state.questions.find((item) => item.id === Number(action.payload.id))
+            let newQuestion = { ...questionFind, user_answer: action.payload.user_answer }
             return {
                 ...state,
-                user_answers_true: [...state.user_answers_true, action.userAnswer]
+                questions_after: [...state.questions_after, newQuestion]
             }
-        case 'TOTAL_WRONG_ANSWER':
+        case 'COUNT_TRUE':
             return {
                 ...state,
-                user_wrong_answers: [...state.user_wrong_answers, action.wrongAnswer]
+                user_answers_true: state.user_answers_true + 1
+            }
+        case 'COUNT_FALSE':
+            return {
+                ...state,
+                user_wrong_answers: state.user_wrong_answers + 1
             }
         default:
             return state

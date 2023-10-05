@@ -24,7 +24,7 @@ const Login = () => {
         }
     }
     return (
-        <div className='w-1/4 justify-center container-login'>
+        <div className='w-1/4 justify-center container-login p-5 md:py-10 md:px-10 '>
             <h1 className="font-bold text-lg text-neutral-900 mb-5">
                 Đăng nhập
             </h1>

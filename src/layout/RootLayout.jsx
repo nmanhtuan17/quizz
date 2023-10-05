@@ -1,11 +1,12 @@
 import React from 'react';
 import { Navbar } from '../components/index';
 import { Outlet } from 'react-router-dom';
+import SiteBar from '../components/navbar/SiteBar';
 const RootLayout = () => {
     return (
         <main className="bg-neutral-50 font-Inter">
             <Navbar />
-            <div className="p-5 md:py-10 md:px-10 overflow-hidden">
+            <div className="overflow-hidden">
                 <Outlet />
             </div>
         </main>

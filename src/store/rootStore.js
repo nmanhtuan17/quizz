@@ -46,7 +46,8 @@ const rootStore = {
             all_answers: [
                 "Rẽ trái nếu đảm bảo an toàn",
                 "Rẽ trái theo ý muốn",
-                "Rẽ trái khi có người hướng dẫn giao thông"
+                "Rẽ trái khi có người hướng dẫn giao thông",
+                "Không được rẽ trái"
             ]
         },
         {

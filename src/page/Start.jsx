@@ -6,9 +6,8 @@ const Start = () => {
         <div className="flex">
             <SiteBar />
             <div className="grow flex flex-wrap">
-                <Test idx={1} status='Chưa hoàn thành' />
-                <Test idx={2} status='Hoàn thành' />
-                <Test idx={3} status='Hoàn thành' />
+                <Test idx={1} status='Chưa hoàn thành' page={1} />
+                <Test idx={2} status='Hoàn thành' page={2} />
             </div>
         </div>
 

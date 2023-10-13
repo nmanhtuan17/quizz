@@ -4,11 +4,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Answer from '../components/Answer';
 import Context from '../store/Context';
 const Quiz = () => {
-    const [{questions, questions_after}, dispatch] = useContext(Context)
-    const { id } = useParams()
+    const [{questions, questions_after, topics}, dispatch] = useContext(Context)
+    const { id, page } = useParams()
     const navigate = useNavigate()
     const question = questions.filter((item) => item.id === Number(id))
+    const question2 = topics[page].all_questions
 
+    console.log(question2.length)
     const handleOnclick = (answer) => {
         dispatch({
             type: 'SET_ANSWER',
@@ -26,14 +28,13 @@ const Quiz = () => {
                 type: "COUNT_FALSE",
             })
         }
-        if (Number(id) === questions.length) {
+        if (Number(id) === question2.length) {
             navigate('/finish')
         }else{
-            navigate(`/quiz/${Number(id) + 1}`)
+            navigate(`/quiz/${page}/${Number(id) + 1}`)
 
         }
     }
-    console.log(questions_after);
     return (
         <div className='container p-5 md:py-10 md:px-10 '>
             <div className='flex justify-between mx-32'>

@@ -32,7 +32,6 @@ const Finish = () => {
                 Back to dashboard
             </button>
 
-            {/* Summary */}
             <h3 className="text-center text-neutral-600 font-semibold md:text-lg pt-[50px]">
                 Answer
             </h3>

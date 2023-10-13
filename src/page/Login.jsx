@@ -1,27 +1,34 @@
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import '../style/login.scss'
 import Context from '../store/Context'
 const Login = () => {
     const navigate = useNavigate()
-    const [{allUser}, dispatch] = useContext(Context)
+    const [{ allUser }, dispatch] = useContext(Context)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [user, setUser] = useState({})
-    const handleSignIn = ()=> {
+    useEffect(() => {
+        const auth = allUser.filter((user) => (user.email === email && user.password === password))
+        if (auth.length > 0) {
+            sessionStorage.setItem('user', JSON.stringify(user))
+            navigate('/quiz')
+        }
+    }, [user])
+    const handleSignIn = () => {
         setUser({
             email: email,
             password: password
         })
-        const auth = allUser.filter((user) => (user.email === email && user.password === password))
-        if (auth.length > 0) {
-            dispatch({
-                type: 'LOGIN',
-                user: auth[0]
-            })
-            navigate('/quiz')
-        }
+        dispatch({
+            type: 'LOGIN',
+            user: {
+                email: email,
+                password: password
+            }
+        })
+
     }
     return (
         <div className='w-1/4 justify-center container-login p-5 md:py-10 md:px-10 '>
@@ -62,7 +69,7 @@ const Login = () => {
             <br />
             <button
                 className="flex rounded-full bg-orange-500 hover:bg-neutral-50 hover:text-orange-500 p-0.5 justify-center font-medium md:font-bold text-base  text-center  mb-3 transition text-white mt-2"
-                onClick={()=>handleSignIn()}
+                onClick={() => handleSignIn()}
             >
 
                 <span>Sign In</span>

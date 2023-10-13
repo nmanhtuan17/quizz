@@ -1,14 +1,15 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { NavLink, useNavigate, redirect } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
 import Context from "../../store/Context";
 function Navbar() {
     const [{ userLogin, userData }, dispatch] = useContext(Context)
-
+    
     const navigate = useNavigate()
     const handleLogout = () => {
         dispatch({
             type: 'LOGOUT'
         })
+        sessionStorage.removeItem('user')
         navigate('/')
     }
     return (
@@ -19,7 +20,7 @@ function Navbar() {
                     {/* <div className="w-2 h-2 bg-red-500 mt-2 ml-1 rounded-full" /> */}
                 </h1>
                 <div className="space-x-5">
-                    {userLogin === false ?
+                    {!userLogin ?
 
                         (<NavLink className={({ isActive }) => isActive ? "py-2 px-5 text-orange-500 font-semibold border rounded-full border-orange-500"
                             :
@@ -29,7 +30,7 @@ function Navbar() {
                         </NavLink>)
                         :
                         (<div>
-                            <span className="text-lg font-semibold mr-5">{userData.username}</span>
+                            <span className="text-lg font-semibold mr-5">{userData.email}</span>
                             <button
                                 className="py-2 transition px-5 text-neutral-50 font-semibold rounded-full bg-red-600"
                                 onClick={() => handleLogout()}

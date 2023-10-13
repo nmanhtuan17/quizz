@@ -26,7 +26,8 @@ const rootStore = {
             all_answers: [
                 "Phương tiện chạy trên đường sắt",
                 "Phương tiện đang có tín hiệu ưu tiên",
-                "Phương tiện đi từ bên phải của bạn"
+                "Phương tiện đi từ bên phải của bạn",
+                "Phương tiện được biển báo ưu tiên"
             ]
         },
         {
@@ -46,7 +47,8 @@ const rootStore = {
             all_answers: [
                 "Rẽ trái nếu đảm bảo an toàn",
                 "Rẽ trái theo ý muốn",
-                "Rẽ trái khi có người hướng dẫn giao thông"
+                "Rẽ trái khi có người hướng dẫn giao thông",
+                "Không được rẽ trái"
             ]
         },
         {
@@ -60,6 +62,124 @@ const rootStore = {
             ]
         }
     ],
+    topics: [
+        {
+            id: 1,
+            all_questions: [
+                {
+                    id: 1,
+                    question: "Phần của đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?",
+                    correct_answer: "Phần đường xe chạy",
+                    all_answers: [
+                        "Phần mặt đường và lề đường",
+                        "Phần đường xe chạy",
+                        "Phần đường xe cơ giới",
+                    ],
+                },
+                {
+                    id: 2,
+                    question: "Phương tiện nào được ưu tiên khi điều khiển trên đường có biển báo đường ưu tiên?",
+                    correct_answer: "Phương tiện được biển báo ưu tiên",
+                    all_answers: [
+                        "Phương tiện chạy trên đường sắt",
+                        "Phương tiện đang có tín hiệu ưu tiên",
+                        "Phương tiện đi từ bên phải của bạn",
+                        "Phương tiện được biển báo ưu tiên"
+                    ]
+                },
+                {
+                    id: 3,
+                    question: "Biển báo hết đoạn đường ưu tiên đặc biệt có hình dạng như thế nào?",
+                    correct_answer: "Hình tam giác đặc biệt màu vàng",
+                    all_answers: [
+                        "Hình vuông màu xanh",
+                        "Hình tròn màu đỏ",
+                        "Hình tam giác đặc biệt màu vàng"
+                    ]
+                },
+                {
+                    id: 4,
+                    question: "Khi gặp biển báo cấm rẽ trái, người lái xe phải làm gì?",
+                    correct_answer: "Không được rẽ trái",
+                    all_answers: [
+                        "Rẽ trái nếu đảm bảo an toàn",
+                        "Rẽ trái theo ý muốn",
+                        "Rẽ trái khi có người hướng dẫn giao thông",
+                        "Không được rẽ trái"
+                    ]
+                },
+                {
+                    id: 5,
+                    question: "Khi muốn dừng xe tại vạch dừng xe đường bộ, bạn phải làm gì?",
+                    correct_answer: "Dừng xe đối với tất cả các phương tiện đến sau",
+                    all_answers: [
+                        "Dừng xe đối với xe công an",
+                        "Dừng xe đối với xe ưu tiên",
+                        "Dừng xe đối với tất cả các phương tiện đến sau"
+                    ]
+                }
+            ]
+        },
+        {
+            id: 2,
+            all_questions: [
+                {
+                    id: 1,
+                    question: "Phần của đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?",
+                    correct_answer: "Phần đường xe chạy",
+                    all_answers: [
+                        "Phần mặt đường và lề đường",
+                        "Phần đường xe chạy",
+                        "Phần đường xe cơ giới",
+                    ],
+                },
+                {
+                    id: 2,
+                    question: "Phương tiện nào được ưu tiên khi điều khiển trên đường có biển báo đường ưu tiên?",
+                    correct_answer: "Phương tiện được biển báo ưu tiên",
+                    all_answers: [
+                        "Phương tiện chạy trên đường sắt",
+                        "Phương tiện đang có tín hiệu ưu tiên",
+                        "Phương tiện đi từ bên phải của bạn",
+                        "Phương tiện được biển báo ưu tiên"
+                    ]
+                },
+                {
+                    id: 3,
+                    question: "Biển báo hết đoạn đường ưu tiên đặc biệt có hình dạng như thế nào?",
+                    correct_answer: "Hình tam giác đặc biệt màu vàng",
+                    all_answers: [
+                        "Hình vuông màu xanh",
+                        "Hình tròn màu đỏ",
+                        "Hình tam giác đặc biệt màu vàng"
+                    ]
+                },
+                {
+                    id: 4,
+                    question: "Khi gặp biển báo cấm rẽ trái, người lái xe phải làm gì?",
+                    correct_answer: "Không được rẽ trái",
+                    all_answers: [
+                        "Rẽ trái nếu đảm bảo an toàn",
+                        "Rẽ trái theo ý muốn",
+                        "Rẽ trái khi có người hướng dẫn giao thông",
+                        "Không được rẽ trái"
+                    ]
+                },
+                {
+                    id: 5,
+                    question: "Khi muốn dừng xe tại vạch dừng xe đường bộ, bạn phải làm gì?",
+                    correct_answer: "Dừng xe đối với tất cả các phương tiện đến sau",
+                    all_answers: [
+                        "Dừng xe đối với xe công an",
+                        "Dừng xe đối với xe ưu tiên",
+                        "Dừng xe đối với tất cả các phương tiện đến sau"
+                    ]
+                }
+            ]
+        },
+    ],
+
+
     questions_after: [],
     user_answers_true: 0,
     user_wrong_answers: 0

@@ -65,6 +65,7 @@ const rootStore = {
     topics: [
         {
             id: 1,
+            status: "Chưa hoàn thành",
             all_questions: [
                 {
                     id: 1,
@@ -122,6 +123,7 @@ const rootStore = {
         },
         {
             id: 2,
+            status: "Chưa hoàn thành",
             all_questions: [
                 {
                     id: 1,
@@ -174,6 +176,16 @@ const rootStore = {
                         "Dừng xe đối với xe ưu tiên",
                         "Dừng xe đối với tất cả các phương tiện đến sau"
                     ]
+                },
+                {
+                    id: 6,
+                    question: "Khi muốn dừng xe tại vạch dừng xe đường bộ, bạn phải làm gì?",
+                    correct_answer: "Dừng xe đối với tất cả các phương tiện đến sau",
+                    all_answers: [
+                        "Dừng xe đối với xe công an",
+                        "Dừng xe đối với xe ưu tiên",
+                        "Dừng xe đối với tất cả các phương tiện đến sau"
+                    ]
                 }
             ]
         },
@@ -182,8 +194,9 @@ const rootStore = {
 
     questions_after: [],
     user_answers_true: 0,
-    user_wrong_answers: 0
-
+    user_wrong_answers: 0,
+    point: 0
+    
 
 
 }
@@ -208,7 +221,7 @@ const rootReducer = (state, action) => {
                 userData: {}
             }
         case 'SET_ANSWER':
-            let questionFind = state.questions.find((item) => item.id === Number(action.payload.id))
+            let questionFind = state.topics[Number(action.payload.topic)].all_questions.find((item) => item.id === Number(action.payload.id))
             let newQuestion = { ...questionFind, user_answer: action.payload.user_answer }
             return {
                 ...state,
@@ -217,13 +230,21 @@ const rootReducer = (state, action) => {
         case 'COUNT_TRUE':
             return {
                 ...state,
-                user_answers_true: state.user_answers_true + 1
+                user_answers_true: state.user_answers_true + 1,
+                point: state.point + 1
             }
         case 'COUNT_FALSE':
             return {
                 ...state,
                 user_wrong_answers: state.user_wrong_answers + 1
             }
+        case 'FINISH': {
+            return {
+                ...state,
+                user_answers_true: 0,
+                user_wrong_answers: 0
+            }
+        }
         default:
             return state
     }

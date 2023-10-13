@@ -4,19 +4,20 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Answer from '../components/Answer';
 import Context from '../store/Context';
 const Quiz = () => {
-    const [{questions, questions_after, topics}, dispatch] = useContext(Context)
+    const [{ topics}, dispatch] = useContext(Context)
     const { id, page } = useParams()
     const navigate = useNavigate()
-    const question = questions.filter((item) => item.id === Number(id))
     const question2 = topics[page].all_questions
+    const question = question2.filter((item) => item.id === Number(id))
 
-    console.log(question2.length)
+    
     const handleOnclick = (answer) => {
         dispatch({
             type: 'SET_ANSWER',
             payload: {
                 id: id,
-                user_answer: answer
+                user_answer: answer,
+                topic: page
             }
         })
         if(answer === question[0].correct_answer){
@@ -29,7 +30,7 @@ const Quiz = () => {
             })
         }
         if (Number(id) === question2.length) {
-            navigate('/finish')
+            navigate('/finish', {state: question2})
         }else{
             navigate(`/quiz/${page}/${Number(id) + 1}`)
 
@@ -39,7 +40,7 @@ const Quiz = () => {
         <div className='container p-5 md:py-10 md:px-10 '>
             <div className='flex justify-between mx-32'>
 
-                <span className=' max-w-fit items-center space-x-3 text-neutral-700 ring-[1px] ring-neutral-400 rounded-lg p-3 text-xs font-semibold mr-3'><span className='text-lg'>{question[0].id}</span>/{questions.length}</span>
+                <span className=' max-w-fit items-center space-x-3 text-neutral-700 ring-[1px] ring-neutral-400 rounded-lg p-3 text-xs font-semibold mr-3'><span className='text-lg'>{question[0].id}</span>/{question2.length}</span>
                 <TimeStamp />
             </div>
 

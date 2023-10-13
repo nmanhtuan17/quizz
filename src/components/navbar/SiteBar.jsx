@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { FiUser } from 'react-icons/fi'
 import Context from '../../store/Context';
 const SiteBar = () => {
-    const [{ user_answers_true }] = useContext(Context)
+    const [{ user_answers_true, point }] = useContext(Context)
     const [userLogin, setUserLogin] = useState(null)
     useEffect(() => {
         getUser()
@@ -32,7 +32,7 @@ const SiteBar = () => {
                 </div>
                 <div className='border w-5/6 border-r-slate-200 mx-auto mb-2'></div>
                 <div className='mx-5'>
-                    <div className='  '>Point:  {user_answers_true * 10}</div>
+                    <div className='  '>Point:  {point * 10}</div>
                     <div className='  '>Test Complete:    2</div>
                     <div className='  '>Test No Complete: 1</div>
                 </div>

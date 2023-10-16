@@ -1,12 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 import { FiUser } from 'react-icons/fi'
 import Context from '../../store/Context';
 const SiteBar = () => {
-    const [{ user_answers_true, point }] = useContext(Context)
+    const [{ topics, point }] = useContext(Context)
     const [userLogin, setUserLogin] = useState(null)
     useEffect(() => {
         getUser()
     }, [])
+    const result = useMemo(()=> {
+        let count = 0
+        topics.map((topic) => {
+            if (topic.status === true) {
+                count +=1
+            }
+        })
+        return count
+    }, [topics])
     const getUser = () => {
         try {
             const user = sessionStorage.getItem('user')
@@ -33,8 +42,8 @@ const SiteBar = () => {
                 <div className='border w-5/6 border-r-slate-200 mx-auto mb-2'></div>
                 <div className='mx-5'>
                     <div className='  '>Point:  {point * 10}</div>
-                    <div className='  '>Test Complete:    2</div>
-                    <div className='  '>Test No Complete: 1</div>
+                    <div className='  '>Test Complete:    {result}</div>
+                    <div className='  '>Test No Complete: {topics.length - result}</div>
                 </div>
             </div>
         </div>

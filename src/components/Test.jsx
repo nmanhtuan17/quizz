@@ -9,7 +9,7 @@ const Text = ({ idx, page}) => {
             <h1 className='text-lg font-semibold '>Bài thi {idx}</h1>
             <div className='my-3'>Câu hỏi: {topics[page-1].all_questions.length}</div>
             <div>Thời gian: 60p</div>
-            <div className="mt-5">{topics[page-1].status}</div>
+            <div className="mt-5">{topics[page-1].status ? 'Đã hoàn thành': 'Chưa hoàn thành'}</div>
 
             <button className='my-5 bg-orange-500 p-2 rounded-full' onClick={() => navigate(`/quiz/${page -1}/1`)}>Bắt đầu</button>
 

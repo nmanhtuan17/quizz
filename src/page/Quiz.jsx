@@ -30,6 +30,10 @@ const Quiz = () => {
             })
         }
         if (Number(id) === question2.length) {
+            dispatch({
+                type: 'SET_STATUS',
+                topic: page
+            })
             navigate('/finish', {state: question2})
         }else{
             navigate(`/quiz/${page}/${Number(id) + 1}`)

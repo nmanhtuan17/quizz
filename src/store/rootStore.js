@@ -65,7 +65,7 @@ const rootStore = {
     topics: [
         {
             id: 1,
-            status: "Chưa hoàn thành",
+            status: false,
             all_questions: [
                 {
                     id: 1,
@@ -123,7 +123,7 @@ const rootStore = {
         },
         {
             id: 2,
-            status: "Chưa hoàn thành",
+            status: false,
             all_questions: [
                 {
                     id: 1,
@@ -245,6 +245,18 @@ const rootReducer = (state, action) => {
                 user_wrong_answers: 0
             }
         }
+        case 'SET_STATUS':
+            // const topic = state.topics[action.topic]
+            let newTopics = state.topics.map((topic, index) => {
+                if (index === Number(action.topic)) {
+                    topic.status = true
+                }
+                return topic
+            })
+            return {
+                ...state,
+                topics: newTopics
+            }
         default:
             return state
     }
